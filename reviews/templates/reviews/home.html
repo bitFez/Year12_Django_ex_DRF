@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <br>
+    <br>
+    <h1>Reviews Homepage</h1>
+    <br>
+
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="row row-cols-3">
+        {% for review in reviews.all %}
+        <div class="card" style="width: 18rem;">
+          <img src="{{review.image.url}}" height="400" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{review.title}}</h5>
+            <p class="card-text">{{review.body|truncatewords:30}}</p>
+            <p><a href="{% url 'filmreview' review.id %}" class="btn btn-primary">Read Review</a>
+              <span class="float-right"> <a href="{% url 'profile_detail' review.author.id %}">{{review.author}}</a> </span>
+          </div>
+        </div>
+        {% endfor%}
+      </div>
+    </div>
+    <div class="col-sm-3">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">User</th>
+            <th scope="col">No Reviews</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for rev in reviewers.all %}
+          <tr>
+            <td>{{rev.author}}</td>
+            <td>{{rev.no_reviews}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <br>
+    <br>
+    <h1> {{title}} </h1>
+    <br>
+    <div class="row no-gutters">
+      <div class="col-6 col-md-4">
+        <img src="{{image.url}}" height="510" width="350" alt="">
+      </div>
+      <div class="col-sm-6 col-md-8">
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 class="display-4">{{title}}</h1>
+            <p class="lead">
+              <ul class="list-group list-group-horizontal">
+                <li class="list-group-item">Review Author: <a href="{% url 'profile_detail' author.id %}">{{author}}</a></li>
+                <li class="list-group-item">Review Date: {{pub_date}}</li>
+                <li class="list-group-item">Author Review: {{criticR}}</li>
+              </ul>
+            </p>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">IMDB rating {{rating}} /10 (from {{votes}} votes)</li>
+              <li class="list-group-item">Release: {{year}}</li>
+              <li class="list-group-item">Duration {{dura}}</li>
+            </ul>
+            <p>PLOT <br>{{plot}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      Author review: {{stars}}
+      <br>
+      {{body}}
+    </div>
+
+{% endblock %}
