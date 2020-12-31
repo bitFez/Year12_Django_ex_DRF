@@ -13,5 +13,8 @@ class Reviews(models.Model):
     image = models.ImageField(upload_to='film_image', null=True, blank=True, default="film_image/film_club.png")
     criticR = models.IntegerField(validators=[MaxValueValidator(10), MinValueValidator(1)])
 
+    class Meta:
+        ordering = ['pub_date']
+
     def __str__(self):
         return self.title

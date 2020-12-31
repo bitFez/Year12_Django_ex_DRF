@@ -8,6 +8,9 @@ from profiles.models import Profile
 from . forms import CreateUserForm, ReviewForm
 from django.contrib.auth.decorators import login_required
 
+from rest_framework import generics
+from .serializers import ReviewSerializer
+
 # Create your views here.
 def home(request):
     reviews=Reviews.objects
@@ -81,3 +84,13 @@ def submitreview(request):
         else:
             form = ReviewForm()
     return render(request, 'reviews/reviewform.html', {'form':form})
+
+
+class ReviewsList(generics.ListCreateAPIView):
+    queryset = Reviews.objects.all()
+    serializer_class = ReviewSerializer
+
+
+class ReviewsDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Reviews.objects.all()
+    serializer_class = ReviewSerializer
