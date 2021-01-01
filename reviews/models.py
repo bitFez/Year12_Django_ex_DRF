@@ -12,6 +12,7 @@ class Reviews(models.Model):
     imdb_ref = models.CharField(max_length=20)
     image = models.ImageField(upload_to='film_image', null=True, blank=True, default="film_image/film_club.png")
     criticR = models.IntegerField(validators=[MaxValueValidator(10), MinValueValidator(1)])
+    applauds = models.ManyToManyField(User, blank=True, related_name="collected_applauds")
 
     class Meta:
         ordering = ['pub_date']

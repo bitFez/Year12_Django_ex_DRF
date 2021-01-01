@@ -35,6 +35,7 @@ def filmreview(request, review_id):
         'x-rapidapi-key': "b385a20357msh7b3963623e55750p124c50jsnb26567f00801"
         }
     criticR = review.criticR
+    applauds = review.applauds
     response = requests.request("GET", url, headers=headers).json()
     stars = (criticR*'⭐')
     rating = response['rating']
@@ -46,7 +47,7 @@ def filmreview(request, review_id):
 
 
     context = {'review':review, 'title':title, 'author':author, 'pub_date':pub_date, 'image':image, 'imdb_ref':imdb_ref, 'body':body,
-                'rating':rating, 'votes':votes, 'year':year, 'dura':dura, 'plot':plot, 'stars':stars, 'criticR':criticR}
+                'rating':rating, 'votes':votes, 'year':year, 'dura':dura, 'plot':plot, 'stars':stars, 'criticR':criticR, 'applauds':applauds}
     return render(request, 'reviews/filmreview.html', context)
 
 def registration(request):
