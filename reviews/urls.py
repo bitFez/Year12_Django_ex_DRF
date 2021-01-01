@@ -12,3 +12,4 @@ urlpatterns = [
     path('api-list/', views.ReviewsList.as_view()),
     path('api/<int:pk>/', views.ReviewsDetail.as_view()),
 ]
+urlpatterns = format_suffix_patterns(urlpatterns)
