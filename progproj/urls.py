@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('reviews.urls')),
     path('', include('profiles.urls')),
+    path('', include('frontend.urls')),
     path('login/', LoginView.as_view(), name="login"),
     path('logout/', LogoutView.as_view(), name='logout'),
 ]
